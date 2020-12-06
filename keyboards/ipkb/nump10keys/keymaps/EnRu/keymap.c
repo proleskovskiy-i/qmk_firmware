@@ -9,8 +9,9 @@ void matrix_init_user() {
 
 // Layer Declarations
 enum {
-    _FIRST = 0,
-    _SECOND = 1
+    _En = 0,
+    _ru = 1,
+    _RU = 2
 };
 
 enum unicode_names {
@@ -92,16 +93,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * │ g │ h │ i │
      * └───┴───┴───┘
      */
-    [_FIRST] = LAYOUT(
-        KC_NO,  KC_NO, TO(_SECOND),
+    [_En] = LAYOUT(
+        KC_NO,  KC_NO, TO(_ru),
         KC_Q,   KC_W,   KC_E,
         KC_A,   KC_S,   KC_D,
         KC_Z,   KC_X,   KC_C
     ),
-    [_SECOND] = LAYOUT(
-        KC_NO , KC_NO , TO(_FIRST) ,
-        KC_NO , XP(RU_a, RU_A) , KC_NO ,
-        KC_NO , X(RU_a) ,  X(RU_A) ,
+    [_ru] = LAYOUT(
+        KC_NO , KC_NO , TO(_En) ,
+        KC_NO , X(RU_a) , KC_NO ,
+        KC_NO , KC_NO ,  KC_NO ,
+        KC_NO , KC_NO , TT(_RU)
+    ),
+    [_RU] = LAYOUT(
+        KC_NO , KC_NO , KC_NO ,
+        KC_NO , X(RU_A) , KC_NO ,
+        KC_NO , KC_NO ,  KC_NO ,
         KC_NO , KC_NO , KC_NO
-    )
+    ),
+
 };
