@@ -14,13 +14,13 @@ enum {
 };
 
 enum unicode_names {
-	RU_A_SMALL,
-    RU_A_BIG
+	RU_a,
+    RU_A
 };
 
 const uint32_t PROGMEM unicode_map[] = {
-	[RU_A_SMALL]        = 0x0430,
-	[RU_A_BIG]          = 0x0410
+	[RU_a]        = 0x0430,
+	[RU_A]          = 0x0410
 };
 
 
@@ -100,8 +100,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_SECOND] = LAYOUT(
         KC_NO , KC_NO , TO(_FIRST) ,
-        KC_NO , XP(X(RU_A_SMALL), X(RU_A_BIG)) , KC_NO ,
-        KC_NO , X(RU_A_SMALL) ,  X(RU_A_BIG) ,
+        KC_NO , XP(RU_a, RU_A) , KC_NO ,
+        KC_NO , X(RU_a) ,  X(RU_A) ,
         KC_NO , KC_NO , KC_NO
     )
 };
