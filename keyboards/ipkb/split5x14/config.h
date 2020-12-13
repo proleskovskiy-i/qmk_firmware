@@ -42,3 +42,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCE 5
+
+
+#define UNICODE_SELECTED_MODES UC_WINC
+#define UNICODE_KEY_WINC KC_RALT
+#define TAPPING_TERM 200

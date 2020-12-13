@@ -101,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_ru] = LAYOUT(
         KC_NO , KC_NO , TO(_En) ,
-        KC_NO , X(RU_a) , KC_NO ,
+        KC_NO , XP(RU_a, RU_A) , KC_NO ,
         KC_NO , KC_NO ,  KC_NO ,
         KC_NO , KC_NO , TT(_RU)
     ),
