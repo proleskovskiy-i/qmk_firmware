@@ -16,3 +16,4 @@ BOOTLOADER = caterina
 #   the appropriate keymap folder that will get included automatically
 #
 SPLIT_KEYBOARD = yes
+UNICODEMAP_ENABLE = yes

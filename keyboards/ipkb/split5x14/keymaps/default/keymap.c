@@ -8,15 +8,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 /*      - дефолтный слой с обычной раскладкой
         - дефолтный слой с доп. раскладкой numpad, arrows, ins...
         - кастомный слой с универсальной раскладкой в юникоде
@@ -26,9 +17,9 @@
 
 // Layer Declarations
 enum {
-    _Def_abc = 0,
+    _Def_abc = 2,
     _Def_123 = 1,
-    _Cust_abc = 2,
+    _Cust_abc = 0,
     _Cust_pnct = 3,
     _Cust_123 = 4
 };
@@ -38,39 +29,30 @@ enum unicode_names {
 	U_TILD,
     U_NOMER,
     U_MINS,
+    U_SLSH,
+    U_QUOT,
+    U_CLN,
+    U_COMM,
+    U_COMAT,
 
 };
 
 const uint32_t PROGMEM unicode_map[] = {
 	[U_TILD]        = 0x007E,
 	[U_NOMER]       = 0x2116,
-    [U_MINS]        =
+    [U_MINS]        = 0x2212,
+    [U_SLSH]        = 0x005C,
+    [U_QUOT]        = 0x0022,
+    [U_CLN]         = 0x003A,
+    [U_COMM]        = 0x002C,
+    [U_COMAT]       = 0x0040
+   // [U_]            = 0x,
 };
 
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    /*----------------------------------------------------------------------------------------------------------------------------------------------
-     * ,------------------------------------------------.          ,------------------------------------------------.
-     * |  Esc |   1  |   2  |   3  |   4  |   5  |  6   |          | Bksp |   7  |  8   |   9  |   0  |   -  |   =  |
-     * |------+------+------+------+------+------+------|          |------+------+------+------+------+------+------|
-     * | Tab  |   Q  |   W  |   E  |   R  |   T  | Del  |          |  Del |   Y  |   U  |   I  |   O  |   P  |  {   |
-     * |------+------+------+------+------+------+------|          |------+------+------+------+------+------+------|
-     * |CapsLk|   A  |   S  |   D  |   F  |   G  | Enter|          | Enter|   H  |   J  |   K  |   L  |   :  | "    |
-     * |------+------+------+------+------+------+------|          |------+------+------+------+------+------+------|
-     * | Shift|   Z  |   X  |   C  |   V  |   B  |      |          |      |   N  |   M  |   ,  |   .  |  /   |  }   |
-     * |------+------+------+------+------+------+------|          |------+------+------+------+------+------+------|
-     * | Ctrl |  Win |      |      | Alt  |Space | Ctrl |          | Ctrl |Space | Shift|      |      |      |      |
-     * `------------------------------------------------'          `------------------------------------------------'
-     */
-    [_Def_abc] = LAYOUT_ortho_5x14(
-    KC_ESC,  KC_1,    KC_2,    KC_3,     KC_4,     KC_5,   KC_6,              KC_6 ,    KC_7 ,    KC_8 ,    KC_9 ,   KC_0 ,   KC_MINS , KC_EQL,
-    KC_TAB,  KC_Q,    KC_W,    KC_E,     KC_R,     KC_T,   KC_Y,              KC_T ,    KC_Y ,    KC_U ,    KC_I ,   KC_O ,   KC_P ,    KC_SLSH,
-    KC_CAPS, KC_A,    KC_S,    KC_D,     KC_F,     KC_G,   KC_H,              KC_G ,    KC_H ,    KC_J ,    KC_K ,   KC_L ,   KC_QUOT,  KC_ENT ,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,     KC_V,     KC_B,   KC_N,              KC_B ,    KC_N ,    KC_M ,    KC_COMM, KC_DOT , KC_SLSH,  KC_RSFT,
-    KC_LCTL, KC_LGUI, KC_UP,   KC_DOWN,  KC_LALT,  KC_SPC, KC_LCTL,           KC_LCTL , KC_SPC ,  KC_LALT , KC_HOME, KC_END,  KC_BSPC,  KC_RCTL
-    ),
-       /*----------------------------------------------------------------------------------------------------------------------------------------------
+           /*----------------------------------------------------------------------------------------------------------------------------------------------
      * ,------------------------------------------------.          ,------------------------------------------------.
      * |   ~  |   №  |   -  |   /  |   "  |   :  |  ,   |          |   .  |   _  |  ?   |   %  |   !  |   ;  | Bksp |
      * |------+------+------+------+------+------+------|          |------+------+------+------+------+------+------|
@@ -84,11 +66,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `------------------------------------------------'          `------------------------------------------------'
      */
     [_Cust_abc] = LAYOUT_ortho_5x14(
-    X(U_TILD),  X(U_NOMER),   KC_NO,   KC_NO,    KC_NO,    KC_NO,  KC_NO,             KC_0 , KC_6 ,    KC_7 ,    KC_8 ,   KC_9 ,   KC_0 ,    KC_BSPC,
-    KC_TAB,     KC_Q,         KC_W,    KC_E,     KC_R,     KC_T,   KC_NO,             KC_0 , KC_Y ,    KC_U ,    KC_I ,   KC_O ,   KC_P ,    KC_LBRC,
-    KC_CAPS,    KC_A,         KC_S,    KC_D,     KC_F,     KC_G,   KC_DEL,            KC_0 , KC_H ,    KC_J ,    KC_K ,   KC_L ,   KC_SCLN,  KC_QUOT,
-    KC_LSFT,    KC_Z,         KC_X,    KC_C,     KC_V,     KC_B,   KC_ENT,            KC_0 , KC_N ,    KC_M ,    KC_COMM, KC_DOT , KC_SLSH,  KC_HOME,
-    KC_LCTL,    KC_LGUI,      KC_NO,   KC_NO,    KC_LALT,  KC_SPC, KC_LCTL,           KC_0 , KC_LCTL , KC_LALT , KC_LEFT, KC_DOWN, KC_UP ,   KC_RGHT
+    X(U_TILD), X(U_NOMER), X(U_MINS), X(U_SLSH), X(U_QUOT), X(U_CLN), X(U_COMM),         KC_0 , KC_6 ,    KC_7 ,    KC_8 ,   KC_9 ,   KC_0 ,    KC_BSPC,
+    KC_TAB,    KC_Q,       KC_W,      KC_E,      KC_R,      KC_T,     X(U_COMAT),        KC_0 , KC_Y ,    KC_U ,    KC_I ,   KC_O ,   KC_P ,    KC_LBRC,
+    KC_CAPS,   KC_A,       KC_S,      KC_D,      KC_F,      KC_G,     KC_DEL,            KC_0 , KC_H ,    KC_J ,    KC_K ,   KC_L ,   KC_SCLN,  KC_QUOT,
+    KC_LSFT,   KC_Z,       KC_X,      KC_C,      KC_V,      KC_B,     KC_ENT,            KC_0 , KC_N ,    KC_M ,    KC_COMM, KC_DOT , KC_SLSH,  KC_HOME,
+    KC_LCTL,   KC_LGUI,    KC_NO,     KC_NO,     KC_LALT,   KC_SPC,   KC_LCTL,           KC_0 , KC_LCTL , KC_LALT , KC_LEFT, KC_DOWN, KC_UP ,   KC_RGHT
     ),
            /*----------------------------------------------------------------------------------------------------------------------------------------------
      * ,------------------------------------------------.          ,------------------------------------------------.
@@ -103,13 +85,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |      |      |      |      |      |      |      |          |      |      |      |      |      |      |      |
      * `------------------------------------------------'          `------------------------------------------------'
      */
-    [_Cust_abc] = LAYOUT_ortho_5x14(
+    [_Cust_pnct] = LAYOUT_ortho_5x14(
     X(U_TILD),  X(U_NOMER),   KC_NO,   KC_NO,    KC_NO,    KC_NO,  KC_NO,             KC_0 , KC_6 ,    KC_7 ,    KC_8 ,   KC_9 ,   KC_0 ,    KC_BSPC,
     KC_TAB,     KC_Q,         KC_W,    KC_E,     KC_R,     KC_T,   KC_NO,             KC_0 , KC_Y ,    KC_U ,    KC_I ,   KC_O ,   KC_P ,    KC_LBRC,
     KC_CAPS,    KC_A,         KC_S,    KC_D,     KC_F,     KC_G,   KC_DEL,            KC_0 , KC_H ,    KC_J ,    KC_K ,   KC_L ,   KC_SCLN,  KC_QUOT,
     KC_LSFT,    KC_Z,         KC_X,    KC_C,     KC_V,     KC_B,   KC_ENT,            KC_0 , KC_N ,    KC_M ,    KC_COMM, KC_DOT , KC_SLSH,  KC_HOME,
     KC_LCTL,    KC_LGUI,      KC_NO,   KC_NO,    KC_LALT,  KC_SPC, KC_LCTL,           KC_0 , KC_LCTL , KC_LALT , KC_LEFT, KC_DOWN, KC_UP ,   KC_RGHT
     ),
+    /*----------------------------------------------------------------------------------------------------------------------------------------------
+     * ,------------------------------------------------.          ,------------------------------------------------.
+     * |  Esc |   1  |   2  |   3  |   4  |   5  |  6   |          | Bksp |   7  |  8   |   9  |   0  |   -  |   =  |
+     * |------+------+------+------+------+------+------|          |------+------+------+------+------+------+------|
+     * | Tab  | Q[Й] | W[Ц] | E[У] | R[К] | T[Е] | Del  |          |  Del | Y[Н] | U[Г] | I[Ш] | O[Щ] | P[З] | {[Х] |
+     * |------+------+------+------+------+------+------|          |------+------+------+------+------+------+------|
+     * |CapsLk| A[Ф] | S[Ы] | D[В] | F[А] | G[П] | Enter|          | Enter| H[Р] | J[О] | K[Л] | L[Д] | :[Ж] | "[Э] |
+     * |------+------+------+------+------+------+------|          |------+------+------+------+------+------+------|
+     * | Shift| Z[Я] | X[Ч] | C[С] | V[М] | B[И] |      |          |      | N[Т] | M[Ь] | ,[Б] | .[Ю] | /[Ё] | }[Ъ] |
+     * |------+------+------+------+------+------+------|          |------+------+------+------+------+------+------|
+     * | Ctrl |  Win |      |      | Alt  |Space | Ctrl |          | Ctrl |Space | Shift|      |      |      |      |
+     * `------------------------------------------------'          `------------------------------------------------'
+     */
+    [_Def_abc] = LAYOUT_ortho_5x14(
+    KC_ESC,  KC_1,    KC_2,    KC_3,     KC_4,     KC_5,   KC_6,              KC_6 ,    KC_7 ,    KC_8 ,    KC_9 ,   KC_0 ,   KC_MINS , KC_EQL,
+    KC_TAB,  KC_Q,    KC_W,    KC_E,     KC_R,     KC_T,   KC_Y,              KC_T ,    KC_Y ,    KC_U ,    KC_I ,   KC_O ,   KC_P ,    KC_SLSH,
+    KC_CAPS, KC_A,    KC_S,    KC_D,     KC_F,     KC_G,   KC_H,              KC_G ,    KC_H ,    KC_J ,    KC_K ,   KC_L ,   KC_QUOT,  KC_ENT ,
+    KC_LSFT, KC_Z,    KC_X,    KC_C,     KC_V,     KC_B,   KC_N,              KC_B ,    KC_N ,    KC_M ,    KC_COMM, KC_DOT , KC_SLSH,  KC_RSFT,
+    KC_LCTL, KC_LGUI, KC_UP,   KC_DOWN,  KC_LALT,  KC_SPC, KC_LCTL,           KC_LCTL , KC_SPC ,  KC_LALT , KC_HOME, KC_END,  KC_BSPC,  KC_RCTL
+    )
+
 
 };
 
